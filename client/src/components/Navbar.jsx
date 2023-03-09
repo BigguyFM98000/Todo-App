@@ -4,6 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Landing from "./Landing";
 import { googleLogout } from "@react-oauth/google";
 import logo from "../assets/hrconnect-logo.png"
+import avatar from "../assets/user_avatar.png"
 
 const Navbar = (props) => {
   const logout = () => {
@@ -42,7 +43,7 @@ const Navbar = (props) => {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto lg:hidden"
-                    src=""
+                    src={logo}
                     alt="Your Company"
                   />
                   <img
@@ -85,11 +86,17 @@ const Navbar = (props) => {
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
-                      <img
+                      {props.picture ? 
+                        <img
                         className="h-8 w-8 rounded-full"
                         src={props.picture}
                         alt="profile avatar"
-                      />
+                      /> : <img
+                      className="h-8 w-8 rounded-full"
+                      src={avatar}
+                      alt="profile avatar"
+                    />
+                      }
                     </Menu.Button>
                   </div>
                   <Transition
@@ -111,7 +118,7 @@ const Navbar = (props) => {
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            {props.name}
+                            {props.name || "Guest User"}
                           </a>
                         )}
                       </Menu.Item>

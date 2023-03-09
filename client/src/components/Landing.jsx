@@ -1,8 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
+import Navbar from "./Navbar";
+import logo from "../assets/hrconnect-logo.png";
 
-const Landing = () => {
+const Landing = (props) => {
   return (
+    <Fragment>
+    <Navbar logo={logo} name={props.name} familyName={props.family_name} givenName={props.given_name} picture={props.picture}/>
     <div className="overflow-hidden bg-white shadow sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
         <h3 className="text-base font-semibold leading-6 text-gray-900">
@@ -103,6 +107,7 @@ const Landing = () => {
         </dl>
       </div>
     </div>
+    </Fragment>
   );
 };
 
